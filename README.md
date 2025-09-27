@@ -37,7 +37,12 @@ This project predicts user interest in tourism packages using machine learning. 
 - GitHub: Version control and documentation  
 - Hugging Face Spaces: Interactive app  
 - Colab: Reproducible notebook interface
+- Hugging Face Spaces: [Live App](https://huggingface.co/spaces/ManishManu44/TourismPackagePrediction)
+---
 
+## 🌐 Live Demo
+
+👉 Try the app on Hugging Face Spaces: [Tourism Package Predictor](https://huggingface.co/spaces/ManishManu44/TourismPackagePrediction)
 ---
 
 ## 🛠️ Setup Instructions
