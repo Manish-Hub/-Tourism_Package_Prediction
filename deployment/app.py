@@ -5,25 +5,21 @@ import pandas as pd
 # Load model
 model = joblib.load("models/xgboost_final_model.joblib")
 
-# Title
-st.title("🧭 Tourism Package Prediction")
+st.title("Tourism Package Predictor")
 
-# Input form
-st.sidebar.header("User Features")
-age = st.sidebar.slider("Age", 18, 70, 30)
-income = st.sidebar.number_input("Annual Income (₹)", 100000, 1000000, 500000)
-gender = st.sidebar.selectbox("Gender", ["Male", "Female"])
-# Add more features as needed...
+# Sidebar inputs
+age = st.slider("Age", 18, 70, 30)
+income = st.number_input("Income", min_value=10000, max_value=1000000, value=500000)
+gender = st.selectbox("Gender", ["Male", "Female"])
 
 # Prepare input
 input_df = pd.DataFrame({
     "Age": [age],
     "Income": [income],
     "Gender": [gender]
-    # Add more features here...
 })
 
 # Predict
 if st.button("Predict"):
-    prediction = model.predict(input_df)[0]
-    st.success(f"Predicted Package Interest: {prediction}")
+    prediction = model.predict(input_df)
+    st.success(f"Predicted Package Interest: {prediction[0]}")
