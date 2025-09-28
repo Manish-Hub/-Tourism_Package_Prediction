@@ -44,13 +44,26 @@ This project predicts user interest in tourism packages using machine learning. 
 ## 🚀 Deployment Plan
 
 - GitHub: Version control and documentation  
-- Hugging Face Spaces: Interactive app  
 - Colab: Reproducible notebook interface
 - Hugging Face Spaces: [Live App](https://huggingface.co/spaces/ManishManu44/TourismPackagePrediction)
+
+  The app accepts user inputs and returns predictions with confidence scores and interpretability-enhancing messages:
+- 🟢 High interest → personalize the pitch
+- 🔴 Low interest → reconsider strateg
+---
+
+## 🧠 Interpretability & UX
+- Dynamic input fields
+- Conditional color feedback
+- Confidence scores
+- Insight boxes for actionable messaging
+---
+
+📜 License
+MIT License. See LICENSE file for details
 ---
 
 ## 🌐 Live Demo
-
 👉 Try the app on Hugging Face Spaces: [Tourism Package Predictor](https://huggingface.co/spaces/ManishManu44/TourismPackagePrediction)
 ---
 
