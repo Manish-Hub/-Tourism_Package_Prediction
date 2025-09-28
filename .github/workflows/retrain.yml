@@ -1,4 +1,5 @@
 name: Retrain Model on Tag Push
+
 on:
   push:
     tags:
@@ -8,17 +9,24 @@ jobs:
   retrain:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.8'
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r deployment/requirements.txt
+
       - name: Run training script
         run: python pipeline/train_model.py
+
+      - name: List model directory
+        run: ls -l models/
+
       - name: Save model artifact
         uses: actions/upload-artifact@v4
         with:
