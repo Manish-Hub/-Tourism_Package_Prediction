@@ -32,3 +32,10 @@ jobs:
         with:
           name: xgboost_model
           path: models/xgboost_final_model.joblib
+
+      - name: Deploy model to Hugging Face
+        run: python pipeline/deploy_model.py
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+
+
