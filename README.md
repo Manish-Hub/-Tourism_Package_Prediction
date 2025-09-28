@@ -60,15 +60,15 @@ This project predicts user interest in tourism packages using machine learning. 
 ---
 
 📜 License
-MIT License. See LICENSE file for details
+- MIT License. See LICENSE file for details
 ---
 
 ## 🌐 Live Demo
-👉 Try the app on Hugging Face Spaces: [Tourism Package Predictor](https://huggingface.co/spaces/ManishManu44/TourismPackagePrediction)
+- 👉 Try the app on Hugging Face Spaces: [Tourism Package Predictor](https://huggingface.co/spaces/ManishManu44/TourismPackagePrediction)
 ---
 
 ## 🛠️ Setup Instructions
-
-```bash
+```
+bash
 pip install -r requirements.txt
 python deployment/app.py
