@@ -1,0 +1,58 @@
+name: Retrain and Deploy Model
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run training script
+        run: python pipeline/train_model.py
+
+      - name: Upload model artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: xgboost_model
+          path: models/xgboost_final_model.joblib
+
+  deploy:
+    needs: retrain
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Hugging Face CLI
+        run: pip install huggingface_hub
+
+      - name: Upload model to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          from huggingface_hub import HfApi
+          api = HfApi()
+          api.upload_file(
+              path_or_fileobj="models/xgboost_final_model.joblib",
+              path_in_repo="models/xgboost_final_model.joblib",
+              repo_id="ManishManu44/Tourism_Package_Prediction",
+              token="${{ secrets.HF_TOKEN }}"
+          )
