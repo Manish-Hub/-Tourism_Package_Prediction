@@ -22,7 +22,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r deployment/requirements.txt
 
-      - name: Run test script
-        run: |
+      - name: Run tests with unittest
+        run: python -m unittest discover -s tests
           ls tests/
           python tests/test_model.py
