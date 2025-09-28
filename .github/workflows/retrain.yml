@@ -20,7 +20,7 @@ jobs:
       - name: Run training script
         run: python pipeline/train_model.py
       - name: Save model artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: xgboost_model
           path: models/xgboost_final_model.joblib
