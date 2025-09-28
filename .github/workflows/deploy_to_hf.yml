@@ -1,0 +1,38 @@
+name: Deploy Model to Hugging Face
+
+on:
+  workflow_run:
+    workflows: ["Retrain Model on Tag Push"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install huggingface_hub
+
+      - name: Upload model to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          from huggingface_hub import HfApi
+          api = HfApi()
+          api.upload_file(
+              path_or_fileobj="models/xgboost_final_model.joblib",
+              path_in_repo="models/xgboost_final_model.joblib",
+              repo_id="ManishManu44/Tourism_Package_Prediction",
+              token="${{ secrets.HF_TOKEN }}"
+          )
