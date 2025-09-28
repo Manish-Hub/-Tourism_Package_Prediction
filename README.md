@@ -1,5 +1,12 @@
-# 🧭 Tourism Package Prediction
+# 🧠 Tourism Package Interest Predictor
+This project predicts whether a customer is likely to respond positively to a tourism package offer, using demographic, behavioral, and engagement features. It demonstrates a full-stack machine learning pipeline—from preprocessing and model comparison to deployment and interpretability.
+---
 
+## 🔍 Problem Statement
+Tourism companies often struggle to identify which customers are likely to respond to promotional packages. This model helps predict interest levels based on user profiles, enabling targeted outreach and personalized marketing strategies.
+---
+
+## 🧭 Tech specs
 This project predicts user interest in tourism packages using machine learning. It includes data cleaning, model comparison, and deployment-ready artifacts.
 
 ---
